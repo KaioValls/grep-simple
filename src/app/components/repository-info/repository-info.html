@@ -1,1 +1,83 @@
-<p>repository-info works!</p>
+<div class="rounded-lg border border-neutral-800 bg-neutral-900 p-6">
+  <div class="mb-6 flex items-start gap-5">
+    <div
+      class="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg bg-red-600 text-2xl font-bold text-white"
+    >
+      IN
+      <!--Icon for the camel or java or python or whatever repository-->
+    </div>
+    <div class="flex-1">
+      <div class="text-2xl font-bold text-slate-50">infra-core</div>
+      <div class="mt-1 flex items-center gap-4 text-sm text-neutral-400">
+        <span class="flex items-center gap-1.5"
+          >Branch <strong class="text-slate-200">main</strong></span
+        >
+        <span
+          >Last commit: <strong class="text-slate-200">feat: add kubernetes support</strong></span
+        >
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <button
+        class="rounded-md p-2 text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-slate-100"
+        aria-hidden="true"
+      >
+        <lucide-icon name="refresh-ccw" size="20"></lucide-icon>
+      </button>
+      <button
+        class="rounded-md p-2 text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-slate-100"
+        aria-hidden="true"
+      >
+        <lucide-icon name="folder" size="20"></lucide-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-3 gap-4 text-slate-100">
+    <div class="col-span-2">
+      <div class="mb-2 text-sm font-medium">Commit history (last {{ commitHystory.length }})</div>
+      <div *ngFor="let commit of commitHystory" class="mb-2">
+        <div class="rounded border border-neutral-800 bg-slate-50/5 p-3">
+          <div class="text-sm font-medium">{{ commit.message }}</div>
+          <div class="text-xs text-neutral-400">{{ commit.author }} • {{ commit.date }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="mb-2 text-sm font-medium">Repository details</div>
+      <div class="mb-2 text-cs text-neutral-400">
+        Files scanned <span class="font-medium">1.2k</span>
+      </div>
+      <div class="mb-2 h-2 w-full overflow-hidden rounded bg-slate-100/5">
+        <div class="h-2 rounded w-12 bg-emerald-300"></div>
+      </div>
+      <div class="text-xs text-slate-300">Last scan: 2m ago</div>
+    </div>
+  </div>
+
+  <div class="mt-4 w-full text-slate-100">
+    <div class="mb-2 text-sm font-medium">Files (preview)</div>
+    <table class="w-full text-left text-xs text-slate-400">
+      <thead class="text-left text-xs text-slate-400">
+        <tr>
+          <th class="w-8/12 pb-2">Path</th>
+          <th class="w-2/12 pb-2">Type</th>
+          <th class="w-2/12 pb-2">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let gitChange of gitChangeList" class="border-t border-neutral-800">
+          <td class="truncate py-2">{{gitChange.path}}</td>
+          <td class="py-2">{{gitChange.type}}</td>
+          <td class="py-2 text-xs"
+            [ngClass]="{
+              'text-amber-400': gitChange.status === 'modified',
+              'text-emerald-400': gitChange.status === 'added'
+            }"
+          >{{gitChange.status}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
