@@ -2,7 +2,7 @@ import { ApplicationConfig, importProvidersFrom, provideBrowserGlobalErrorListen
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import {  LucideAngularModule, Menu, Minus, Square, X } from 'lucide-angular';
+import {  Folder, GitBranch, LucideAngularModule, Menu, Minus, RefreshCcw, Square, X } from 'lucide-angular';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,7 +14,11 @@ export const appConfig: ApplicationConfig = {
         Square,
         Minus,
         X,
-        Menu
+        Menu,
+        GitBranch,
+        RefreshCcw,
+        Folder,
+
       })
     )
   ]

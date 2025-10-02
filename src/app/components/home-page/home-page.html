@@ -1,6 +1,15 @@
 <app-top-bar></app-top-bar>
-<div class="h-full flex">
-  <app-repository-list [repositoriesList]="repositoriesList"></app-repository-list>
-  <app-repository-info [selectedRepository]="selectedRepository"></app-repository-info>
-  <app-repository-options [selectedRepository]="selectedRepository"></app-repository-options>
-</div>
+<main class="grid h-[calc(100vh-73px-40px)] grid-cols-12">
+  <app-repository-list
+    class="col-span-3 flex flex-col border-r border-neutral-800 bg-neutral-900 p-4"
+    [repositoriesList]="repositoriesList"
+  ></app-repository-list>
+  <app-repository-info
+    class="col-span-6 overflow-auto bg-neutral-950 p-6"
+    [selectedRepository]="selectedRepository"></app-repository-info>
+  <app-repository-options
+    class="col-span-3 border-l border-neutral-800 bg-neutral-900 p-4"
+    [selectedRepository]="selectedRepository"
+  >
+  </app-repository-options>
+</main>

@@ -26,12 +26,10 @@ function createWindow() {
   );
 
   ipcMain.on('minimizeApp', () => {
-    console.log('Minimizing app...');
     mainWindow.minimize();
   });
 
   ipcMain.on('maximizeApp', () => {
-    console.log('Maximizing app...');
     if (mainWindow.isMaximized()) {
       mainWindow.unmaximize();
     } else {
@@ -40,7 +38,6 @@ function createWindow() {
   });
 
   ipcMain.on('closeApp', () => {
-    console.log('Closing app...');
     mainWindow.close();
   });
 

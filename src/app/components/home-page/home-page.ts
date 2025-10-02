@@ -12,7 +12,16 @@ import { TopBar } from "../top-bar/top-bar";
 })
 export class HomePage {
 
-  repositoriesList:any[] = [];
+  repositoriesList:any[] = [
+    {
+      repositoryName: 'infra-core',
+      repositoryPath: 'C:/Users/kaio.dos.s.valls/Documents/projects/infra-core'
+    },
+    {
+      repositoryName: 'infra-rtb',
+      repositoryPath: 'C:/Users/kaio.dos.s.valls/Documents/projects/infra-rtb'
+    }
+   ];
   selectedRepository!:any;
 
 }
