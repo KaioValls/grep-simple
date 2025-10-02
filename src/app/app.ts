@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CustomTitlebar } from "./util/custom-titlebar/custom-titlebar";
+import { HomePage } from "./components/home-page/home-page";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [ CustomTitlebar, HomePage],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
