@@ -1,0 +1,19 @@
+<div class="clickable flex h-10 items-center justify-between bg-neutral-950 text-neutral-400">
+  <div class="not-cliclable flex items-center">
+    <img src="" alt="" />
+    <button id="showHideMenus" class="-py-2 rounded-lg bg-neutral-950 px-3 py-2 transition-colors hover:bg-neutral-800 active:bg-red-600">
+      <lucide-icon name="menu" size="15"></lucide-icon>
+    </button>
+  </div>
+  <div class="not-cliclable">
+    <button (click)="minimize()" class="-py-2 rounded-lg bg-neutral-950 px-3 py-2 transition-colors hover:bg-neutral-800">
+      <lucide-icon name="minus" size="15"></lucide-icon>
+    </button>
+    <button (click)="maximize()" class="-py-2 rounded-lg bg-neutral-950 px-3 py-2 transition-colors hover:bg-neutral-800">
+      <lucide-icon name="square" size="15"></lucide-icon>
+    </button>
+    <button (click)="close()" class="-py-2 rounded-lg bg-neutral-950 px-3 py-2 transition-colors hover:bg-neutral-800 active:bg-red-600">
+      <lucide-icon name="x" size="15"></lucide-icon>
+    </button>
+  </div>
+</div>
