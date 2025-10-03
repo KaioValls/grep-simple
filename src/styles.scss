@@ -1,1 +1,36 @@
 @use "tailwindcss";
+
+
+.discreet-scrollbar {
+  /* Para Firefox, a melhor opção é uma barra fina e transparente */
+  scrollbar-width: thin;
+  scrollbar-color: #64748b transparent; /* Alça (thumb) e Fundo (track) */
+
+  /* Para navegadores WebKit (Chrome, Edge, Safari) */
+  /* Deixa o fundo da barra transparente por padrão */
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Deixa a alça da barra transparente por padrão */
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 6px;
+    border: 3px solid transparent; // Evita que a cor "vaze"
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px; // Espaço para a barra aparecer
+  }
+
+  /* MÁGICA: A alça só ganha cor quando o mouse está sobre a área de rolagem */
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(100, 116, 139, 0.5); // Cor slate-500 com 50% de transparência
+    background-clip: content-box;
+  }
+
+  /* Melhora o visual ao passar o mouse diretamente na alça */
+  &:hover::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(100, 116, 139, 0.7); // Mais opaco ao interagir
+  }
+}

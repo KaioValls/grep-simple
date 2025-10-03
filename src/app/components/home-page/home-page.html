@@ -1,15 +1,24 @@
 <app-top-bar></app-top-bar>
-<main class="grid h-[calc(100vh-73px-40px)] grid-cols-12">
+
+<main class="grid h-[calc(100vh-74px-30px)] grid-cols-12">
+
   <app-repository-list
-    class="col-span-3 flex flex-col border-r border-neutral-800 bg-neutral-900 p-4"
-    [repositoriesList]="repositoriesList"
+    class="col-span-3 flex flex-col border-r border-slate-700 bg-gray-950 discreet-scrollbar"
+    [repositoriesList]="repositories"
+    (onSelect)="handleRepositorySelection($event)"
   ></app-repository-list>
+
   <app-repository-info
-    class="col-span-6 overflow-auto bg-neutral-950 p-6"
-    [selectedRepository]="selectedRepository"></app-repository-info>
+    class="col-span-6 overflow-y-auto bg-slate-950 "
+    [repository]="selectedRepository"
+  ></app-repository-info>
+
   <app-repository-options
-    class="col-span-3 border-l border-neutral-800 bg-neutral-900 p-4"
-    [selectedRepository]="selectedRepository"
+    class="col-span-3 border-l border-neutral-800 bg-gray-950 p-4"
+    [repository]="selectedRepository"
+    (openInIDE)="handleOpenInIDE(selectedRepository)"
+    (openTerminal)="handleOpenTerminal(selectedRepository)"
+    (openFolder)="handleOpenFolder(selectedRepository)"
   >
   </app-repository-options>
 </main>

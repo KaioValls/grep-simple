@@ -1,23 +1,40 @@
-
-  <div class="mb-4 flex items-center justify-between px-2">
-    <h3 class="font-semibold text-slate-50">Repositórios</h3>
-    <span class="text-cx rounded-md bg-neutral-700 px-2 py-1 font-mono text-neutral-300">{{repositoriesList.length}}</span>
+<div class="p-4 border-b border-slate-700 flex items-center justify-between">
+  <h2 class="font-semibold text-gray-100">Repositórios</h2>
+  <div class="bg-slate-800 text-gray-300 px-2 py-0.5 rounded-md text-sm">
+    {{ repositoriesList.length }}
   </div>
+</div>
 
+<div class="flex-1 overflow-y-auto">
+  <div class="p-2 space-y-1">
+    <button
+      *ngFor="let repo of repositoriesList"
+      (click)="selectRepository(repo.id)"
+      class="w-full text-left p-3 rounded-lg transition-all duration-200 border border-transparent hover:border-slate-700 hover:bg-slate-800/50 group"
+      [ngClass]="{ 'bg-slate-800 border-red-500/30 shadow-glow-sm': selectedId === repo.id }"
+    >
+      <div class="flex items-start gap-3">
+        <div
+          class="w-1 h-1 rounded-full mt-2 transition-all duration-200"
+          [ngClass]="{
+            'bg-green-500 shadow-glow-accent animate-glow-pulse': repo.isActive,
+            'bg-gray-500': !repo.isActive
+          }"
+        ></div>
 
-  <div class="flex-1 space-y-2 overflow-auto pr-2">
-    <div *ngFor="let item of repositoriesList"
-      class="border-1-4 flex cursor-default items-center gap-3 rounded-lg border-red-500 bg-red-600/20 p-3 transition-all duration-200">
-      <div class="h-10 w-2 rounded bg-emerald-500" aria-hidden="true"></div>
-      <div class="flex-1 overflow-hidden">
-        <div class="truncate text-sm font-medium text-slate-100">{{item.repositoryName}}</div>
-        <div class="truncate font-mono text-xs text-neutral-400">
-          {{item.repositoryPath}}
+        <div class="flex-1 min-w-0">
+          <h3 class="font-medium text-gray-100 truncate">{{ repo.name }}</h3>
+          <p class="text-xs text-gray-400 font-mono truncate mt-1">
+            {{ repo.path }}
+          </p>
         </div>
       </div>
-      <div class="h-4 w-4 shrink-0 text-neutral-500" aria-hidden="true">
-        <lucide-icon name="git-branch" size="20"></lucide-icon>
-      </div>
-    </div>
+    </button>
   </div>
+</div>
 
+<div class="p-4 border-t border-slate-700 bg-slate-900/50">
+  <p class="text-xs text-gray-400">
+    <span class="font-medium">Pro tip:</span> Expanda nodes para explorar pastas. Pastas .git serão detectadas automaticamente.
+  </p>
+</div>

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { LucideAngularModule } from "lucide-angular";
+import { FilePreview, Repository } from '../../models/repository';
 
 @Component({
   selector: 'app-repository-info',
@@ -13,15 +14,34 @@ import { LucideAngularModule } from "lucide-angular";
 })
 export class RepositoryInfo {
 
-  @Input() selectedRepository!:any;
-  commitHystory:any[] = [
-    {message: 'fix(payment): handle null pointer', author: 'Kaio', date: '2025-09-18'},
-    {message: 'feat(api): add retry', author: 'Kaio', date: '2025-09-18'}
-  ];
+ // Recebe o objeto do repositório (ou nulo) de um componente pai
+  @Input() repository: Repository | null = null;
 
-  gitChangeList:any[] = [
-    {path: 'src/main/java/com/example/PaymentProcessor.java', type: 'Java', status: 'modified'},
-    {path: 'src/main/resources/application.yml', type: 'YAML', status: 'added'},
-    {path: 'src/test/java/com/example/PaymentProcessorTest.java', type: 'Java', status: 'modified'},
-  ];
+  /**
+   * Retorna as classes CSS com base no status do arquivo.
+   * Chamada diretamente do template com [ngClass].
+   */
+  getStatusColor(status: FilePreview['status']): string {
+    switch (status) {
+      case 'modified':
+        return 'text-yellow-500 bg-yellow-500/10 border-yellow-500/20';
+      case 'internal':
+        return 'text-blue-500 bg-blue-500/10 border-blue-500/20';
+      case 'untracked':
+      default:
+        return 'text-gray-400 bg-slate-800/50 border-slate-700';
+    }
+  }
+
+  /**
+   * Retorna as iniciais do nome do repositório para o ícone.
+   */
+  getInitials(name: string): string {
+    if (!name) return '';
+    const parts = name.split(/[-_ ]/);
+    if (parts.length > 1) {
+      return (parts[0][0] + parts[1][0]).toUpperCase();
+    }
+    return name.substring(0, 2).toUpperCase();
+  }
 }
