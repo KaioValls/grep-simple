@@ -1,36 +1,32 @@
 @use "tailwindcss";
 
+/* ==========================================================
+   ESTILO DE SCROLLBAR GLOBAL (ABORDAGEM MAIS SIMPLES)
+   Coloque no final do seu arquivo styles.scss
+   ========================================================== */
 
-.discreet-scrollbar {
-  /* Para Firefox, a melhor opção é uma barra fina e transparente */
-  scrollbar-width: thin;
-  scrollbar-color: #64748b transparent; /* Alça (thumb) e Fundo (track) */
+/* Para Chrome, Edge, Safari e outros navegadores baseados em WebKit */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
 
-  /* Para navegadores WebKit (Chrome, Edge, Safari) */
-  /* Deixa o fundo da barra transparente por padrão */
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
+::-webkit-scrollbar-track {
+  background: red; /* Um cinza bem escuro para o fundo da barra */
+}
 
-  /* Deixa a alça da barra transparente por padrão */
-  &::-webkit-scrollbar-thumb {
-    background-color: transparent;
-    border-radius: 6px;
-    border: 3px solid transparent; // Evita que a cor "vaze"
-  }
+::-webkit-scrollbar-thumb {
+  background-color: #0066ff; /* Um cinza médio para a própria barra */
+  border-radius: 6px;
+  border: 3px solid green; /* Cria uma borda com a cor do fundo */
+}
 
-  &::-webkit-scrollbar {
-    width: 10px; // Espaço para a barra aparecer
-  }
+::-webkit-scrollbar-thumb:hover {
+  background-color: #e5ff00d8; /* Um cinza mais claro ao passar o mouse */
+}
 
-  /* MÁGICA: A alça só ganha cor quando o mouse está sobre a área de rolagem */
-  &:hover::-webkit-scrollbar-thumb {
-    background-color: rgba(100, 116, 139, 0.5); // Cor slate-500 com 50% de transparência
-    background-clip: content-box;
-  }
-
-  /* Melhora o visual ao passar o mouse diretamente na alça */
-  &:hover::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(100, 116, 139, 0.7); // Mais opaco ao interagir
-  }
+/* Para Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: var(--color-slate-700) #07070700; /* Cor da barra e cor do fundo */
 }
