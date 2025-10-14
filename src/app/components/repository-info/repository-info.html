@@ -11,11 +11,11 @@
         <div class="flex items-center gap-4 text-sm">
           <div class="flex items-center gap-2">
             <lucide-icon name="git-branch" class="w-4 h-4 text-gray-400"></lucide-icon>
-            <span class="text-gray-100 font-medium">{{ repository.branch }}</span>
+            <span class="text-gray-100 font-medium">{{ repository.gitInfo.currentBranch }}</span>
           </div>
           <div class="flex items-center gap-2 text-gray-400">
             <span>Último commit:</span>
-            <span class="text-gray-100 font-medium">{{ repository.lastCommit }}</span>
+            <span class="text-gray-100 font-medium">{{ repository.commits[0].date }}</span>
           </div>
         </div>
       </div>
@@ -44,7 +44,7 @@
           </div>
           <div>
             <p class="text-xs text-gray-400">Files scanned</p>
-            <p class="text-2xl font-bold text-gray-100">{{ repository.stats.filesScanned }}</p>
+            <p class="text-2xl font-bold text-gray-100">{{ repository.scanStats.filesScanned }}</p>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@
           </div>
           <div>
             <p class="text-xs text-gray-400">Last scan</p>
-            <p class="text-lg font-semibold text-gray-100">{{ repository.stats.lastScan }}</p>
+            <p class="text-lg font-semibold text-gray-100">{{ repository.scanStats.lastScan }}</p>
           </div>
         </div>
       </div>

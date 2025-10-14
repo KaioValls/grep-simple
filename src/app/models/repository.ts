@@ -3,10 +3,9 @@ export interface Repository {
   name: string;
   path: string;
   isActive: boolean;
-  branch: string;
-  lastCommit: string;
+  gitInfo: GitInfo;
   commits: Commit[];
-  stats: {
+  scanStats: {
     filesScanned: string;
     lastScan: string;
   };
@@ -15,6 +14,7 @@ export interface Repository {
 
 // Interfaces para tipagem dos dados, portadas diretamente do React
 export interface Commit {
+  id: number;
   message: string;
   author: string;
   date: string;
@@ -24,4 +24,10 @@ export interface FilePreview {
   path: string;
   type: string;
   status: 'modified' | 'internal' | 'untracked';
+}
+
+export interface GitInfo {
+  currentBranch: string;
+  lastCommitHash: string;
+  remoteUrl: string;
 }
