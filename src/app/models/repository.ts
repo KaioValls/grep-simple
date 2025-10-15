@@ -23,7 +23,7 @@ export interface RepoCommit {
 export interface FilePreview {
   path: string;
   type: string;
-  status: 'modified' | 'internal' | 'untracked';
+  status: 'modified' | 'internal' | 'added' | 'changed'| 'untracked';
 }
 
 export interface GitInfo {

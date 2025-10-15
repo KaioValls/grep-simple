@@ -4,3 +4,16 @@ import { App } from './app/app';
 
 bootstrapApplication(App, appConfig)
   .catch((err) => console.error(err));
+
+declare global {
+  interface Window {
+    electronAPI: {
+      closeApp: () => void;
+      minimizeApp: () => void;
+      maximizeApp: () => void;
+      openFolder: (path: string) => void;
+    };
+  }
+}
+
+export {};

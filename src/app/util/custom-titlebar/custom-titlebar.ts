@@ -1,16 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import {LucideAngularModule } from 'lucide-angular';
 
-declare global {
-  interface Window {
-    electronAPI: {
-      closeApp: () => void;
-      minimizeApp: () => void;
-      maximizeApp: () => void;
-    };
-  }
-}
-
 @Component({
   selector: 'app-custom-titlebar',
   standalone: true,

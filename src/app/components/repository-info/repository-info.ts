@@ -27,6 +27,10 @@ export class RepositoryInfo {
         return 'text-yellow-500 bg-yellow-500/10 border-yellow-500/20';
       case 'internal':
         return 'text-blue-500 bg-blue-500/10 border-blue-500/20';
+      case 'added':
+        return 'text-blue-500 bg-blue-500/10 border-blue-500/20';
+      case 'changed':
+        return 'text-green-500 bg-green-500/10 border-green-500/20';
       case 'untracked':
       default:
         return 'text-gray-400 bg-slate-800/50 border-slate-700';

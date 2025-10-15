@@ -1,6 +1,7 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, shell } = require('electron');
 const url = require('url');
 const path = require('path');
+
 let mainWindow;
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -13,7 +14,7 @@ function createWindow() {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: false,
       contextIsolation: true,
-      devTools: true
+      devTools: true,
     },
     autoHideMenuBar: true,
   });
@@ -41,12 +42,14 @@ function createWindow() {
     mainWindow.close();
   });
 
+  ipcMain.on('open-folder', (event, folderPath) => {
+    shell.openPath(folderPath);
+  });
+
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
-
 }
-
 
 app.on('ready', createWindow);
 app.on('window-all-closed', function () {
@@ -55,6 +58,3 @@ app.on('window-all-closed', function () {
 app.on('activate', function () {
   if (mainWindow === null) createWindow();
 });
-
-
-

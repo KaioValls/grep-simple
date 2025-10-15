@@ -3,6 +3,8 @@ import { LucideAngularModule } from "lucide-angular";
 import { Repo } from '../../models/repository';
 import { CommonModule } from '@angular/common';
 
+
+
 @Component({
   selector: 'app-repository-options',
   imports: [LucideAngularModule, CommonModule],
@@ -22,4 +24,9 @@ export class RepositoryOptions {
   @Output() openInIDE = new EventEmitter<void>();
   @Output() openTerminal = new EventEmitter<void>();
   @Output() openFolder = new EventEmitter<void>();
+
+   openRepoFolder() {
+    window.electronAPI.openFolder(this.repository!.path);
+  }
+
 }
