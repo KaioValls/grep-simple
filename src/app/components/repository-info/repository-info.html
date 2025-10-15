@@ -1,4 +1,4 @@
-<div class="rounded-lg border border-neutral-800 bg-gray-950">
+<div class=" bg-gray-950">
 
   <div *ngIf="repository; else noData" class="p-6 space-y-6 animate-slide-up">
     <div class="flex items-start gap-4">
@@ -80,7 +80,7 @@
               <td class="py-3 font-mono text-xs text-gray-100">{{ file.path }}</td>
               <td class="py-3 text-gray-400">{{ file.type }}</td>
               <td class="py-3">
-                <span class="px-2 py-1 text-xs font-medium rounded-md border" [ngClass]="getStatusColor(file.status)">
+                <span class="px-2 py-1 text-xs font-medium rounded-xl border" [ngClass]="getStatusColor(file.status)">
                   {{ file.status }}
                 </span>
               </td>

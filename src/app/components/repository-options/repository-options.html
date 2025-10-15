@@ -1,6 +1,5 @@
 <ng-container *ngIf="repository as repo">
   <div class="flex flex-col h-full">
-
     <div class="mb-4 text-white">
       <div class="flex items-center gap-3">
         <div class="rounded bg-red-600 p-2">
@@ -13,30 +12,137 @@
       </div>
     </div>
 
-    <div class="space-y-3 text-slate-100 flex-1">
-      <div class="rounded border border-neutral-800 bg-slate-900/50 p-3">
-        <div class="mb-2 text-xs text-neutral-400">Branch Atual</div>
-        <div class="font-medium truncate">{{ repo.gitInfo.currentBranch }}</div>
+    <div class="text-slate-100 overflow-y-auto pr-2 flex-1 space-y-3">
+      <div class="rounded-xl border border-neutral-800 bg-slate-900/50 p-4">
+        <div class="flex gap-2 text-neutral-400">
+          <lucide-icon name="git-branch" class="w-4 h-4"></lucide-icon>
+          <div class="mb-2 text-xs">Branch Atual</div>
+        </div>
+        <span
+          class="px-2 py-1 text-xs font-medium rounded-xl border border-red-500/20 bg-red-500/10 text-red-500 inline-block"
+        >
+          {{ repo.gitInfo.currentBranch }}
+        </span>
       </div>
 
-      <div class="rounded border border-neutral-800 bg-slate-900/50 p-3">
+      <div class="rounded-xl border border-neutral-800 bg-slate-900/50 p-4">
         <div class="mb-2 text-xs text-neutral-400">Último Commit</div>
         <div class="text-sm font-medium truncate">{{ repo.repoCommits[0]?.message }}</div>
-        <div class="mt-1 text-xs text-neutral-400 truncate">{{ repo.repoCommits[0]?.author }} • {{ repo.repoCommits[0]?.date | date:'dd/MM/yyyy • HH:mm' }}</div>
+        <div class="mt-1 text-xs text-neutral-400 truncate">
+          {{ repo.repoCommits[0]?.author }} •
+          {{ repo.repoCommits[0]?.date | date : 'dd/MM/yyyy • HH:mm' }}
+        </div>
       </div>
 
-      <div class="rounded border border-neutral-800 bg-slate-900/50 p-3 text-white">
-        <div class="mb-2 text-xs text-neutral-400">Ações</div>
+      <div class="">
+        <div class="mb-2 text-xs text-neutral-400 font-semibold">Ações</div>
         <div class="flex flex-col gap-2">
-          <button (click)="openInIDE.emit()" class="w-full rounded border border-neutral-700 hover:bg-slate-800/50 transition-colors px-3 py-2 text-sm">Abrir no IDE</button>
-          <button (click)="openTerminal.emit()" class="w-full rounded border border-neutral-700 hover:bg-slate-800/50 transition-colors px-3 py-2 text-sm">Abrir terminal aqui</button>
-          <button (click)="openRepoFolder()" class="w-full rounded bg-emerald-600 hover:bg-emerald-700 transition-colors px-3 py-2 text-sm text-white">
+          <button
+            (click)="openInIDE.emit()"
+            class="flex items-center gap-4 rounded border border-neutral-700 hover:bg-slate-800/50 transition-colors px-3 py-2 text-sm font-semibold"
+          >
+            <lucide-icon name="code-xml" class="w-4 h-4"></lucide-icon>
+            Abrir no IDE
+          </button>
+          <button
+            (click)="openTerminal.emit()"
+            class="flex items-center gap-4 rounded border border-neutral-700 hover:bg-slate-800/50 transition-colors px-3 py-2 text-sm font-semibold"
+          >
+            <lucide-icon name="terminal" class="w-4 h-4"></lucide-icon>
+            Abrir terminal aqui
+          </button>
+          <button
+            (click)="openRepoFolder()"
+            class="flex items-center gap-4 w-full rounded bg-emerald-600 hover:bg-emerald-700 transition-colors px-3 py-2 text-sm text-white font-semibold"
+          >
+            <lucide-icon name="folder-open" class="w-4 h-4"></lucide-icon>
             Abrir pasta do repositório
           </button>
         </div>
       </div>
-    </div>
 
+      <div class="">
+        <div class="mb-2 text-xs text-neutral-400 font-semibold">Repository</div>
+        <div class="flex flex-col gap-2">
+          <button
+            class="flex items-center gap-4 rounded border border-neutral-700 hover:bg-slate-800/50 transition-colors px-3 py-2 text-sm font-semibold"
+          >
+            <lucide-icon name="search" class="w-4 h-4"></lucide-icon>
+            Search files
+          </button>
+          <button
+            class="flex items-center gap-4 rounded border border-neutral-700 hover:bg-slate-800/50 transition-colors px-3 py-2 text-sm font-semibold"
+          >
+            <lucide-icon name="history" class="w-4 h-4"></lucide-icon>
+            View history
+          </button>
+          <button
+            class="flex items-center gap-4 rounded border border-neutral-700 hover:bg-slate-800/50 transition-colors px-3 py-2 text-sm font-semibold"
+          >
+            <lucide-icon name="git-compare" class="w-4 h-4"></lucide-icon>
+            Compare Branches
+          </button>
+          <button
+            class="flex items-center gap-4 rounded border border-neutral-700 hover:bg-slate-800/50 transition-colors px-3 py-2 text-sm font-semibold"
+          >
+            <lucide-icon name="download" class="w-4 h-4"></lucide-icon>
+            Pull Changes
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <div class="mb-2 text-xs text-neutral-400 font-semibold">Scan Control</div>
+        <div class="grid-cols-2 gap-2 grid">
+          <button
+            class="flex items-center justify-center gap-2 rounded border border-neutral-700 hover:bg-slate-800/50 transition-colors px-3 py-2 text-sm font-semibold"
+          >
+            <lucide-icon name="refresh-ccw" class="w-4 h-4"></lucide-icon>
+            Re-run
+          </button>
+          <button
+            class="flex items-center justify-center gap-2 rounded border border-neutral-700 hover:bg-slate-800/50 transition-colors px-2 py-2 text-sm font-semibold"
+          >
+            <lucide-icon name="pause" class="w-4 h-4"></lucide-icon>
+            Pause
+          </button>
+          <button
+            class="flex items-center justify-center gap-2 rounded border border-neutral-700 hover:bg-slate-800/50 transition-colors px-2 py-2 text-sm font-semibold"
+          >
+            Skip add
+          </button>
+          <button
+            class="flex items-center justify-center gap-2 rounded border border-neutral-700 hover:bg-slate-800/50 transition-colors px-2 py-2 text-sm font-semibold"
+          >
+            Add Params
+          </button>
+        </div>
+      </div>
+
+      <div class="">
+        <div class="mb-2 text-xs text-neutral-400 font-semibold">Ações</div>
+        <div class="flex flex-col gap-2">
+          <button
+            class="flex items-center gap-4 rounded border border-neutral-700 hover:bg-slate-800/50 transition-colors px-3 py-2 text-sm font-semibold"
+          >
+            <lucide-icon name="settings" class="w-4 h-4"></lucide-icon>
+            Settings
+          </button>
+          <button
+            class="flex items-center gap-4 rounded border border-neutral-700 hover:bg-slate-800/50 transition-colors px-3 py-2 text-sm font-semibold"
+          >
+            <lucide-icon name="file-down" class="w-4 h-4"></lucide-icon>
+            Export report
+          </button>
+          <button
+            class="flex items-center gap-4 rounded border border-neutral-700 hover:bg-slate-800/50 transition-colors px-3 py-2 text-sm font-semibold"
+          >
+            <lucide-icon name="trash-2" class="w-4 h-4"></lucide-icon>
+            Clear cache
+          </button>
+        </div>
+      </div>
+    </div>
     <div class="mt-6 text-xs text-slate-400">
       <b>Dica:</b> Use as configurações para excluir pastas grandes e acelerar o escaneamento.
     </div>
@@ -44,7 +150,10 @@
 </ng-container>
 
 <ng-template #noRepoSelected>
-  <div *ngIf="!repository" class="flex items-center justify-center h-full text-center text-neutral-500">
-    <p>Selecione um repositório<br>para ver as opções.</p>
+  <div
+    *ngIf="!repository"
+    class="flex items-center justify-center h-full text-center text-neutral-500"
+  >
+    <p>Selecione um repositório<br />para ver as opções.</p>
   </div>
 </ng-template>

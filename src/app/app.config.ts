@@ -2,7 +2,7 @@ import { ApplicationConfig, importProvidersFrom, provideBrowserGlobalErrorListen
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import {  Clock, Database, FileCode, Folder, FolderGit2, GitBranch, GitCommitHorizontal, LucideAngularModule, Menu, Minus, RefreshCcw, Search, Settings2, Square, X } from 'lucide-angular';
+import {  Clock, CodeXml, Database, Download, FileCode, FileDown, Folder, FolderGit2, FolderOpen, GitBranch, GitCommitHorizontal, GitCompare, History, LucideAngularModule, Menu, Minus, Pause, RefreshCcw, Search, Settings, Settings2, Square, Terminal, Trash2, X } from 'lucide-angular';
 import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
@@ -26,7 +26,17 @@ export const appConfig: ApplicationConfig = {
         GitCommitHorizontal,
         Database,
         FolderGit2,
-        Settings2
+        Settings2,
+        CodeXml,
+        Terminal,
+        FolderOpen,
+        Pause,
+        History,
+        GitCompare,
+        Download,
+        Settings,
+        FileDown,
+        Trash2
       })
     )
   ]
