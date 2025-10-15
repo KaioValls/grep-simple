@@ -1,10 +1,10 @@
-export interface Repository {
+export interface Repo {
   id: string;
   name: string;
   path: string;
   isActive: boolean;
   gitInfo: GitInfo;
-  commits: Commit[];
+  repoCommits: RepoCommit[];
   scanStats: {
     filesScanned: string;
     lastScan: string;
@@ -13,7 +13,7 @@ export interface Repository {
 }
 
 // Interfaces para tipagem dos dados, portadas diretamente do React
-export interface Commit {
+export interface RepoCommit {
   id: number;
   message: string;
   author: string;

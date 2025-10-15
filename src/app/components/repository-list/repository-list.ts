@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LucideAngularModule } from "lucide-angular";
-import { Repository } from '../../models/repository';
+import { Repo } from '../../models/repository';
 
 @Component({
   selector: 'app-repository-list',
@@ -14,7 +14,7 @@ import { Repository } from '../../models/repository';
 })
 export class RepositoryList implements OnInit {
 
-  @Input() repositoriesList: Repository[] = [];
+  @Input() repositoriesList: Repo[] = [];
   @Input() selectedId: string | null = null;
 
   // @Output() emite um evento para o componente pai
@@ -30,7 +30,7 @@ export class RepositoryList implements OnInit {
   }
 
   // Função trackBy para otimizar o *ngFor, evitando re-renderizações desnecessárias
-  trackById(index: number, repo: Repository): string {
+  trackById(index: number, repo: Repo): string {
     return repo.id;
   }
 

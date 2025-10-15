@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { LucideAngularModule } from "lucide-angular";
-import { FilePreview, Repository } from '../../models/repository';
+import { FilePreview, Repo } from '../../models/repository';
 
 @Component({
   selector: 'app-repository-info',
@@ -15,7 +15,7 @@ import { FilePreview, Repository } from '../../models/repository';
 export class RepositoryInfo {
 
  // Recebe o objeto do repositório (ou nulo) de um componente pai
-  @Input() repository: Repository | null = null;
+  @Input() repository: Repo | null = null;
 
   /**
    * Retorna as classes CSS com base no status do arquivo.

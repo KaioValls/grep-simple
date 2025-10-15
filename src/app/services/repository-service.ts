@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Repository } from '../models/repository';
+import { Repo } from '../models/repository';
 import { environment } from '../../environments/environment.development';
 import { Observable } from 'rxjs';
 
@@ -15,8 +15,8 @@ export class RepositoryService {
 
   constructor(private http:HttpClient) { }
 
-  public getRepositories() : Observable<Repository[]> {
-    return this.http.get<Repository[]>(`${this.API_URL}/repositories/mocked`);
+  public getRepositories() : Observable<Repo[]> {
+    return this.http.get<Repo[]>(`${this.API_URL}/repositories`);
   }
 
 }

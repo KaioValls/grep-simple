@@ -5,7 +5,7 @@ import { RepositoryList } from "../repository-list/repository-list";
 import { RepositoryInfo } from "../repository-info/repository-info";
 import { RepositoryOptions } from "../repository-options/repository-options";
 import { TopBar } from "../top-bar/top-bar";
-import { Repository } from '../../models/repository';
+import { Repo } from '../../models/repository';
 
 @Component({
   selector: 'app-home-page',
@@ -15,10 +15,10 @@ import { Repository } from '../../models/repository';
   styleUrl: './home-page.scss'
 })
 export class HomePage implements OnInit {
-  repositories: Repository[] = [];
+  repositories: Repo[] = [];
 
   // Inicia como nulo para que a tela de "selecione um repositório" apareça
-  selectedRepository: Repository | null = null;
+  selectedRepository: Repo | null = null;
 
   constructor(private repositoryService:RepositoryService, private cdr: ChangeDetectorRef) { }
 
@@ -42,19 +42,19 @@ export class HomePage implements OnInit {
 
 // ...
 
-  handleOpenInIDE(repo: Repository | null) {
+  handleOpenInIDE(repo: Repo | null) {
     if (!repo) return;
     console.log(`Abrindo ${repo.name} no IDE... (Caminho: ${repo.path})`);
     // Ex: this.electronService.openPathInIDE(repo.path);
   }
 
-  handleOpenTerminal(repo: Repository | null) {
+  handleOpenTerminal(repo: Repo | null) {
     if (!repo) return;
     console.log(`Abrindo terminal em ${repo.path}...`);
     // Ex: this.electronService.openTerminalAt(repo.path);
   }
 
-  handleOpenFolder(repo: Repository | null) {
+  handleOpenFolder(repo: Repo | null) {
     if (!repo) return;
     console.log(`Abrindo a pasta ${repo.path} no explorador de arquivos...`);
     // Ex: this.electronService.showItemInFolder(repo.path);

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { LucideAngularModule } from "lucide-angular";
-import { Repository } from '../../models/repository';
+import { Repo } from '../../models/repository';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -14,7 +14,7 @@ export class RepositoryOptions {
      /**
    * Recebe o objeto completo do repositório selecionado, ou nulo.
    */
-  @Input() repository: Repository | null = null;
+  @Input() repository: Repo | null = null;
 
   /**
    * Eventos emitidos para o componente pai executar as ações.

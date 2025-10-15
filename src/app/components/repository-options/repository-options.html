@@ -21,8 +21,8 @@
 
       <div class="rounded border border-neutral-800 bg-slate-900/50 p-3">
         <div class="mb-2 text-xs text-neutral-400">Último Commit</div>
-        <div class="text-sm font-medium truncate">{{ repo.commits[0]?.message }}</div>
-        <div class="mt-1 text-xs text-neutral-400 truncate">{{ repo.commits[0]?.author }} • {{ repo.commits[0]?.date }}</div>
+        <div class="text-sm font-medium truncate">{{ repo.repoCommits[0]?.message }}</div>
+        <div class="mt-1 text-xs text-neutral-400 truncate">{{ repo.repoCommits[0]?.author }} • {{ repo.repoCommits[0]?.date | date:'dd/MM/yyyy • HH:mm' }}</div>
       </div>
 
       <div class="rounded border border-neutral-800 bg-slate-900/50 p-3 text-white">
