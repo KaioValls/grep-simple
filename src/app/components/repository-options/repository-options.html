@@ -38,14 +38,14 @@
         <div class="mb-2 text-xs text-neutral-400 font-semibold">Ações</div>
         <div class="flex flex-col gap-2">
           <button
-            (click)="openInIDE.emit()"
+            (click)="openInIDE()"
             class="flex items-center gap-4 rounded border border-neutral-700 hover:bg-slate-800/50 transition-colors px-3 py-2 text-sm font-semibold"
           >
             <lucide-icon name="code-xml" class="w-4 h-4"></lucide-icon>
             Abrir no IDE
           </button>
           <button
-            (click)="openTerminal.emit()"
+            (click)="openGitBash()"
             class="flex items-center gap-4 rounded border border-neutral-700 hover:bg-slate-800/50 transition-colors px-3 py-2 text-sm font-semibold"
           >
             <lucide-icon name="terminal" class="w-4 h-4"></lucide-icon>

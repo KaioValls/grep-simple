@@ -12,6 +12,8 @@ declare global {
       minimizeApp: () => void;
       maximizeApp: () => void;
       openFolder: (path: string) => void;
+      openGitBash: (path: string) => void;
+      openIntelliJ: (path: string) => void;
     };
   }
 }
